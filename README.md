@@ -1,24 +1,12 @@
-# PrimeReader (prime-reader)
+# PrimeReader
 
-PrimeReader is an advanced reading application designed to provide a seamless and efficient experience for users who read PDF and EPUB documents.
+PrimeReader is an advanced reading application designed to provide a seamless and efficient experience for users who read PDF and EPUB documents. This app combines powerful functionality with an intuitive interface, ensuring that users can easily manage and access their digital library.
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+## Key Features
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+- **Versatile Document Support:** PrimeReader supports both PDF and EPUB formats, catering to a wide range of reading preferences and needs.
+- **User-Friendly Interface:** A clean and modern design makes navigation and reading effortless.
+- **Recent Thumbnails Display:** Quickly access recently opened documents through a visually appealing thumbnail display on the main page.
+- **Efficient File Management:** Overcomes local storage limitations by efficiently managing large files, ensuring quick retrieval and access.
+- **Cross-Platform Compatibility:** Ensures seamless performance across various devices and operating systems.
+- **State Management:** Utilizes robust state management for a smooth user experience.
