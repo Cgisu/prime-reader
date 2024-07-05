@@ -1,0 +1,74 @@
+$themes: (
+  'white': (
+    primary: #ffffff,          // White
+    secondary: #000000,        // Black (complementary to white)
+    positive: #0ddb69,         // Bright Green
+    negative: #ff3b29,         // Bright Red
+    dark: #7f8c8d,             // Medium Gray
+    medium: #bdc3c7,           // Light Gray
+    light: #ecf0f1,            // Very Light Gray
+    backdrop: #f9f9f9,         // Almost White
+    active: #1e90ff,          // Light Gray
+    marginal-bg: #ffffff,      // White
+    marginal-text: #000000,    // Black
+    marginal-btn: rgba(#000000, 0.56), // Black with transparency
+    marginal-btn-active:  #1e90ff, // Black
+  ),
+  'black': (
+    primary: #000000,          // Black
+    secondary: #ffffff,        // White (complementary to black)
+    positive: #0ddb69,         // Bright Green
+    negative: #ff3b29,         // Bright Red
+    dark: #34495e,             // Dark Gray-Blue
+    medium: #7f8c8d,           // Medium Gray
+    light: #bdc3c7,            // Light Gray
+    backdrop: #ecf0f1,         // Light Gray
+    active: #95a5a6,           // Medium Light Gray
+    marginal-bg: #000000,      // Black
+    marginal-text: #ffffff,    // White
+    marginal-btn: rgba(#ffffff, 0.56), // White with transparency
+    marginal-btn-active: #ffffff, // White
+  ),
+);
+
+// Variable color classes
+@each $theme, $colors in $themes {
+  [data-theme="#{$theme}"] {
+    @each $name, $color in $colors {
+      .bg-#{$name} {
+        background: $color !important;
+      }
+      .text-#{$name} {
+        color: $color !important;
+      }
+
+      // Desktop background for primary color
+      @if $name == primary {
+        &.background-desktop {
+          background-image: linear-gradient(-47deg, lighten($color, 15%), darken($color, 15%));
+        }
+      }
+    }
+
+    // Quasar component overrides
+    .q-field__control,
+    .q-item--active,
+    .q-layout__section--marginal {
+      color: map-get($colors, primary) !important;
+    }
+
+    // Quasar active item
+    .settings-menu-col .q-item--active {
+      color: map-get($colors, active) !important;
+      background-color: map-get($colors, secondary) !important;
+      border-radius: 8px !important;
+    }
+
+    // Quasar hover item
+    .settings-menu .q-item:hover {
+      border-radius: 8px !important;
+      -webkit-border-radius: 8px !important;
+      -moz-border-radius: 8px !important;
+    }
+  }
+}

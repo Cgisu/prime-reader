@@ -1,0 +1,76 @@
+// Imports
+@use "sass:math";
+
+// Default app text sizes
+$text-sizes: 12, 16, 21;
+
+// Text size options and multipliers
+$text-size-options: (
+  "sm": 0.8,
+  "md": 1,
+  "lg": 1.2,
+  "xl": 1.4,
+);
+
+// Variable text size class
+@each $size-name, $multiplier in $text-size-options {
+  [data-text-size="#{$size-name}"] {
+    @each $text-size in $text-sizes {
+      .text-size-#{$text-size} {
+        font-size: #{math.div($text-size * $multiplier, 1)}px;
+
+        // q-input overrides
+        &.q-field--dense {
+          .q-field__control,
+          .q-field__marginal {
+            height: #{math.div(46px * $multiplier, 1)};
+          }
+          .q-field__label {
+            top: #{math.div(46px * $multiplier, 4)};
+            font-size: #{math.div(16px * $multiplier, 1)};
+            line-height: #{math.div(23px * $multiplier, 1)};
+          }
+        }
+        &.q-field--labeled {
+          .q-field__native {
+            line-height: #{math.div(24px * $multiplier, 1)};
+          }
+        }
+
+        // q-select overrides
+        &.q-select {
+          .q-field__label {
+            font-size: #{math.div(16px * $multiplier, 1)};
+            top: #{math.div(18px * $multiplier, 1)};
+            line-height: #{math.div(23px * $multiplier, 1)};
+          }
+          .q-field__marginal {
+            height: #{math.div(56px * $multiplier, 1)};
+          }
+          &.q-field--auto-height.q-field--labeled .q-field__control-container {
+            padding-top: #{math.div(24px * $multiplier, 1)};
+          }
+        }
+
+        // q-tab overrides
+        &.q-tab {
+          .q-tab__icon {
+            width: #{math.div(24px * $multiplier, 1)};
+            height: #{math.div(24px * $multiplier, 1)};
+            font-size: #{math.div(24px * $multiplier, 1)};
+          }
+          .q-tab__label {
+            font-size: #{math.div($text-size * $multiplier, 1)}px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Fixed text size classes
+@each $text-size in $text-sizes {
+  .text-size-fixed-#{$text-size} {
+    font-size: #{$text-size}px;
+  }
+}
